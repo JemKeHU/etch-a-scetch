@@ -3,8 +3,39 @@ const blackColor = "black";
 const tools = document.querySelectorAll(".instruments button");
 let currentTool = "pen";
 
+function randomColor() {
+    const max = 255;
+    const min = 0;
+
+    const maxFloored = Math.floor(max);
+    const minCeiled = Math.ceil(min);
+
+    let red = Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+    let green = Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+    let blue = Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+
+    let rgbColors = `rgb(${red}, ${green}, ${blue})`;
+
+    return rgbColors;
+}
+
+function createGrid(size) {
+    container.innerHTML = "";
+
+    const squareSize = 640 / size;
+
+    for (let i = 0; i < size*size; i++) {
+        const div = document.createElement("div");
+        div.classList.add("normal");
+        div.style.width = `${squareSize}px`;
+        div.style.height = `${squareSize}px`;
+        container.appendChild(div);
+    }
+}
+
 function resetToolButtons() {
     tools.forEach((button) => button.classList.remove('active'));
+
 }
 
 tools.forEach((button) => {
@@ -16,16 +47,11 @@ tools.forEach((button) => {
     });
 });
 
-for (let i = 1; i < 257; i++) {
-    const div = document.createElement("div");
-    div.classList.add("normal");
-    container.appendChild(div);
-}
 
 container.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("normal")) {
         if (currentTool === "pen") {
-            event.target.style.backgroundColor = blackColor;
+            event.target.style.backgroundColor = randomColor();
         } else if (currentTool === "eraser") {
             event.target.style.backgroundColor = "white";
         }
@@ -39,3 +65,15 @@ resetBtn.addEventListener("click", () => {
         div.style.backgroundColor = "";
     });
 });
+
+document.querySelector("#grid button").addEventListener("click", () => {
+    const gridSize = parseInt(prompt());
+
+    if (gridSize > 0 && gridSize <= 100) {
+        createGrid(gridSize);
+    } else {
+        alert("Please enter number between 1 and 100");
+    }
+});
+
+createGrid(16);

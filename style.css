@@ -21,11 +21,9 @@
 }
 
 .normal {
-    flex: 1 0 6.25%;
     border: 1px black solid;
     background-color: white;
     box-sizing: border-box;
-    height: 6.25%;
 }
 
 .reset {
@@ -48,4 +46,14 @@
 img {
     width: 25px;
     height: 25px;
+}
+
+#grid button {
+    margin: 25px;
+    font-size: 20px;
+    padding: 16px;
+}
+
+.instruments {
+    margin-top: 25px;
 }
