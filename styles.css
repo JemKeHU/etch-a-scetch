@@ -39,8 +39,8 @@
 
 .container {
   border: 1px solid black;
-  width: 609.6px;
-  height: 609.6px;
+  width: 612px;
+  height: 612px;
   display: flex;
   flex-wrap: wrap;
 }

@@ -2,8 +2,8 @@ let tool = "brush";
 
 const squareContainer = document.querySelector(".container");
 
-const ETCH_WIDTH = 608;
-const ETCH_HEIGHT = 608;
+const ETCH_WIDTH = 610;
+const ETCH_HEIGHT = 610;
 
 const toolsList = document.querySelector("#tools");
 
